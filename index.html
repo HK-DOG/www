@@ -133,7 +133,7 @@
   </script>
   <script src="BSD_files/web3.min.js"></script>
   <script src="BSD_files/bignumber.js"></script>
-  <script src="js.js?v=1"></script>
+  <script src="js.js?v=5"></script>
 </head>
 
 <body class="home page-template page-template-elementor_header_footer page page-id-5374 wp-embed-responsive gecko layout_1c woo_layout_1c elementor-default elementor-template-full-width elementor-kit-1987 elementor-page elementor-page-5374 e--ua-firefox e--ua-mac" data-elementor-device-mode="desktop">
@@ -269,7 +269,7 @@
                           data-settings="{&quot;_animation&quot;:&quot;none&quot;}" data-widget_type="button.default">
                         <div class="elementor-widget-container">
                           <div class="elementor-button-wrapper">
-                            <a href="javascript:alert('Coming Soon')"  class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                            <a href="https://www.pinksale.finance/launchpad/0x3454876F7A293144911983402b7671dC2874c5Ef?chain=Arbitrum" target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						                  <span class="elementor-button-content-wrapper">
 						                    <span class="elementor-button-icon elementor-align-icon-right">
 				                          <i aria-hidden="true" class="fas fa-angle-right"></i>
@@ -339,7 +339,7 @@
 															TotalSupply:
 															<span style="color: #61ce70;">800</span>
                               &nbsp; &nbsp; &nbsp; Mint Index:
-															<span style="color: #61ce70;">1</span>
+															<span style="color: #61ce70;" id="totalSpply">0</span>
 														</span>
 													</h6>
 													<h6 class="p1">Tax cuts rules:</h6>
@@ -370,10 +370,10 @@
               <div class="elementor-element elementor-element-4543ccf elementor-widget elementor-widget-text-editor"
                    data-id="4543ccf" data-element_type="widget" data-widget_type="text-editor.default">
                 <div class="elementor-widget-container">
-                  <h6 class="p1" style="text-align: left;">Mint Fee: <span style="color: #61ce70;">- </span> &nbsp;
+                  <h6 class="p1" style="text-align: left;">Mint Fee: <span style="color: #61ce70;" id="taxFee"></span> &nbsp;
                     &nbsp; &nbsp; &nbsp; Your Tax Fee: <span
-                        style="color: #61ce70;">- %&nbsp; &nbsp; &nbsp; &nbsp; </span>Your HDKTCT: <span
-                        style="color: #61ce70;">-</span></h6></div>
+                        style="color: #61ce70;" id="fee">- %</span>&nbsp; &nbsp; &nbsp; &nbsp; Your HDKTCT: <span
+                        style="color: #61ce70;" id="cards"></span></h6></div>
               </div>
               <div
                   class="elementor-element elementor-element-60861b9 elementor-align-left animated-fast elementor-widget elementor-widget-button"
@@ -381,7 +381,7 @@
                   data-widget_type="button.default">
                 <div class="elementor-widget-container">
                   <div class="elementor-button-wrapper">
-                    <a href="javascript:alert('Coming Soon')" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                    <a href="javascript:mint()" class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon elementor-align-icon-right">
 				<i aria-hidden="true" class="fas fa-angle-right"></i>			</span>
@@ -443,10 +443,10 @@
                       <div class="elementor-element elementor-element-f944db7 elementor-widget elementor-widget-text-editor"
                           data-id="f944db7" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                          <h6 style="text-align: center;">Distributed To Holders</h6>
+                          <h6 style="text-align: center;">Distributed Reward</h6>
                           <h4 class="p1" style="text-align: center;">
                           <span style="color: #ff7700;">
-                            <strong id="totalRewards">0</strong>
+                            <strong id="totalRewards">0 USDT</strong>
                           </span>
                           </h4>
                         </div>
@@ -468,7 +468,7 @@
                           data-settings="{&quot;_animation&quot;:&quot;none&quot;}" data-widget_type="button.default">
                         <div class="elementor-widget-container">
                           <div class="elementor-button-wrapper" id="claimbtn" style="cursor: pointer" onclick="claimReward()">
-                            <a href="javascript:alert('Coming Soon')" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                            <a href="javascript:claimReward()" class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						                  <span class="elementor-button-content-wrapper">
                                 <span class="elementor-button-text">Claim</span>
 		                          </span>
@@ -484,11 +484,11 @@
                       <div class="elementor-element elementor-element-2cc659c elementor-widget elementor-widget-text-editor"
                           data-id="2cc659c" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                          <h6 style="text-align: center;">Total Reward</h6>
+                          <h6 style="text-align: center;">My Claimed Reward</h6>
                           <h4 class="p1" style="text-align: center;">
                           <span style="color: #333333;">
                             <strong>
-                              <span style="color: #61ce70;" id="totalEarned">0 USDT</span>
+                              <span style="color: #61ce70;" id="mytotalReward">0 USDT</span>
                               <span class="Apple-converted-space">&nbsp;</span>
                             </strong>
                           </span>
@@ -498,7 +498,7 @@
                       <div class="elementor-element elementor-element-ddf2af0 elementor-widget elementor-widget-text-editor"
                           data-id="ddf2af0" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                          <h6 style="text-align: center;">Unclaimed Reward</h6>
+                          <h6 style="text-align: center;">My Unclaim Reward</h6>
                           <h4 class="p1" style="text-align: center;">
                             <span style="color: #333333;">
                               <strong>
@@ -698,7 +698,7 @@
                       </div>
                       
                       <div class="desc">
-                        liquidity locked for two year
+                        liquidity locked for one year
                       </div>
                     </div>
                     <div class="card-image-content">
@@ -775,9 +775,9 @@
                 
                 </div>
               </div>
-              <!-- onclick="window.open('https://app.zyberswap.io/exchange/swap?inputCurrency=ETH&outputCurrency=0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9')" -->
+              
               <div
-              onclick="alert('Coming Soon')"
+              onclick="window.open('https://app.zyberswap.io/exchange/swap?inputCurrency=ETH&outputCurrency=0x83032c976655C1Adeb5A2926dEFf7FCe0821F68B')"
               style="cursor: pointer;"
                   class="elementor-element elementor-element-a042ef6 elementor-align-left animated-fast elementor-widget elementor-widget-button"
                   data-id="a042ef6" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;none&quot;}"
@@ -1082,7 +1082,7 @@
                               Sale Start Time
                             </div>
                             <div class="desc">
-                              -
+                              2023.03.02 14:00 (UTC)
                             </div>
                           </div>
                         
@@ -1106,7 +1106,7 @@
                               Sale End Time
                             </div>
                             <div class="desc">
-                              -
+                              2023.03.04 14:00 (UTC)
                             </div>
                           </div>
                         
@@ -1127,7 +1127,7 @@
                               Soft Cap
                             </div>
                             <div class="desc">
-                              -
+                              50 ETH
                             </div>
                           </div>
                         </div>
@@ -1153,7 +1153,7 @@
                           
                           <div class="ova-details ova-linear-gradient">
                             <div class="title">Hard Cap</div>
-                            <div class="desc">-</div>
+                            <div class="desc">200 ETH</div>
                           </div>
                         </div>
                       </div>
@@ -1175,7 +1175,7 @@
                               Liquidity Percent
                             </div>
                             <div class="desc">
-                              -
+                              60%
                             </div>
                           </div>
                         
@@ -1199,7 +1199,7 @@
                               Liquidity Lockup Time
                             </div>
                             <div class="desc">
-                             -
+                             1 YEAR
                             </div>
                           </div>
                         
@@ -1315,11 +1315,10 @@
                         data-id="bf1190b" data-element_type="column">
                       <div class="elementor-widget-wrap elementor-element-populated">
 
-                        <!-- onclick="window.open('https://app.zyberswap.io/exchange/swap?inputCurrency=ETH&outputCurrency=0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9')" -->
-
+                       
                         <div
-                          onclick="alert('Coming Soon')"
-                            
+                  
+                          onclick="window.open('https://app.zyberswap.io/exchange/swap?inputCurrency=ETH&outputCurrency=0x83032c976655C1Adeb5A2926dEFf7FCe0821F68B')"
                             class="elementor-element elementor-element-b84b115 elementor-align-justify elementor-widget elementor-widget-button"
                             data-id="b84b115" data-element_type="widget" data-widget_type="button.default" style="cursor: pointer;">
                           <div class="elementor-widget-container">
